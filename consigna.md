@@ -20,6 +20,41 @@ La consigna contendrá las siguientes relaciones:
 
 ```mermaid
 ---
+title: Diagrama de Flujo de Consigna
+---
+%%{
+  init: {
+    "fontFamily": "monospace",
+    "flowchart": {
+      "htmlLabels": true,
+      "curve": "linear"
+    }
+  }
+}%%
+flowchart
+   direction TB
+
+   subgraph consigneePath["Me consignan"]
+      IReceive["Recibo"] -->
+      ISell["Vendo"] -->
+      IBuy1["Compro"] -->
+      ItRunsOut1["¡Se acaba!"] -->
+      TheyRestock["Reponen (mis proveedores)"] --> IReceive
+   end
+
+   subgraph consignorPath["Yo consigno"]
+      IBuy2["Compro"] -->
+      ISend["Envío"] -->
+      TheySell["Venden (mis clientes)"] -->
+      ItRunsOut2["¡Se acaba!"] -->
+      IRestock["Repongo"] --> IBuy2
+   end
+
+   consigneePath ~~~ consignorPath
+```
+
+```mermaid
+---
 title: Diagrama de Clase de Consigna
 ---
 classDiagram
@@ -28,10 +63,11 @@ classDiagram
    class consign["Orden de Consigna"]
    class consign {
       <<consign.order>>
-      +Many2one~StockPicking~ ingreso
-      +One2many~SaleOrder~ ventas
+      +[recepción, entrega]~ tipo
+      +One2many~StockPicking~ ingresos
+      +One2many~StockPicking~ 
       +One2many~PurchaseOrder~ compras
-      +One2many~StockPicking~ reposiciones
+      +One2many~SaleOrder~ ventas
       +crearTransferenciaEntrada()
       +crearAsientosEntrada()
       +crearAsientosSalida()

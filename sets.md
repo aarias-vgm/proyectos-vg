@@ -148,7 +148,7 @@ Para la creación de sets se utilizaría un wizard para preguntar la ubicación 
 
 Sobre las ubicaciones, mientras estén en un mismo almacén, los lotes/seriales de un set pueden encontrarse dentro de ubicaciones diferentes, lo cual es importante para etapas de preparación relacionadas con productos retornables que podrían requerir limpieza, mantenimiento, armado. Las ubicaciones de los productos también influyen en el estado de sus set: todos los lotes/seriales de un set deberían encontrarse en stock luego de pasar por etapas de preparación para que el set se encuentre "Listo". Adicionalmente, los productos deberían tener una opción para señalar si se distribuyen exclusivamente dentro de sets ("¿Transferir sólo en sets?").
 
-> [!caution]
+> [!CAUTION]
 > El sistema no debería permitir que un lote/serial de un producto relacionado con un set se distribuya de manera independiente en transferencias entre almacenes o de ventas.
 
 #### Retorno de sets
